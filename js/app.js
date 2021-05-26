@@ -2,19 +2,22 @@ var oModul = angular.module('oModul', ['ngRoute']);
 
 oModul.config(function($routeProvider)
 {
+	$routeProvider.when('/',{
+		tamplateUrl: 'index.html'
+	});
 	$routeProvider.when('/naslovna',
 	{
-		templateUrl: 'predlosci/naslovna.html',
+		templateUrl: './predlosci/naslovna.html',
 		controller: 'naslovnicaKontroler'
 	});
 	$routeProvider.when('/taskovi',
 	{
-		templateUrl: 'predlosci/taskovi.html',
+		templateUrl: './predlosci/taskovi.html',
 		controller: 'taskKontroler'
 	});
 	$routeProvider.when('/trgovina',
 	{
-		templateUrl: 'predlosci/trgovina.html',
+		templateUrl: './predlosci/trgovina.html',
 		controller: 'trgovinaKontroler'
 	});
 	$routeProvider.otherwise({
@@ -93,8 +96,8 @@ oModul.controller('trgovinaKontroler', function($scope)
 		},
 		{
 			id: 3,
-			name: 'HELL Energy drink',
-			cijena : 6,
+			name: 'Pecivo',
+			cijena : 3,
 			kolicina : 1000
 		}
 	];
@@ -122,8 +125,7 @@ oModul.controller('trgovinaKontroler', function($scope)
 	}
 	$scope.Provjeri = function(oProizvod){
 		cijena=0;
-		for (var i=0;i<$scope.oKosarica.length;i++)
-		{
+		for (var i=0;i<$scope.oKosarica.length;i++){
 			if (oProizvod.kolicina > $scope.oKosarica[i].kolicina && oProizvod.oProd.id == $scope.oKosarica[i].id){
 				this.kolicina=$scope.oKosarica[i].kolicina;
 			}
@@ -135,7 +137,7 @@ oModul.controller('trgovinaKontroler', function($scope)
 			}
 			for (var i=0;i<$scope.oKosarica.length;i++){
 				cijena = cijena + $scope.oKosarica[i].ukupnacijena;
-				angular.element(document.querySelector('#test')).html(cijena);
+				angular.element(document.querySelector('#cifra')).html(cijena);
 			}
 	}
 });

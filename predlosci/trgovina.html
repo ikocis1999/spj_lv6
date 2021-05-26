@@ -10,15 +10,15 @@
 <body>
 	<ul>
 		<li ng-repeat="oProd in oProizvodi">
-		{{oProd.id}} {{oProd.name}} {{oProd.cijena}} {{oProd.kolicina}}
+		Šifra: {{oProd.id}}, {{oProd.name}}, cijena: {{oProd.cijena}}, količina: {{oProd.kolicina}}
 		<button ng-click ="DodajuKos(oProd)">Košarica</button>
 		</li>
 	</ul>
 	<ul>
 		<li ng-repeat="oProd in oKosarica">
-			{{oProd.name}} 	<input type="number" ng-change="Provjeri(this)" ng-model="this.kolicina">
+			{{oProd.name}} 	<input type="number" min="0" ng-change="Provjeri(this)" ng-model="this.kolicina">
 		</li>
 	</ul>
-	<div id="test"></div>
+	<div id="cifra"></div>
 </body>
 </html>
